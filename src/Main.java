@@ -1,53 +1,68 @@
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 public class Main {
 
     public static void main(String[] args) {
+        Cat cat = new Cat();
+        Bird bird = new Bird();
+        Dog dog = new Dog();
 
-        Car VW = new Car("VW");
-        VW.getVehicleInfo();
+//        Mammal catMammal = new Cat();
+//        Animal birdAnimal = new Bird();
 
-        System.out.println("--------------------------------------");
+        System.out.println(Animal.test);
 
-        Car audiCar = new Car();
-        audiCar.model = "Audi";
-        audiCar.colour = "Red";
-        audiCar.price = 23000.00;
-        audiCar.km = 1200;
-        audiCar.getVehicleInfo();
-        audiCar.isItVehicle();
-        Integer topSpeedAudi = audiCar.getTopSpeed();
-        System.out.println("Top speed is: " + topSpeedAudi);
-        audiCar.run();
-
-        System.out.println("--------------------------------------");
-
-        Car bmwCar = new Car();
-        bmwCar.model = "BWM";
-        bmwCar.colour = "Yellow";
-        bmwCar.price = 28000.00;
-        bmwCar.getVehicleInfo();
-        bmwCar.isItVehicle();
-        bmwCar.setTopSpeed(233);
-        Integer topSpeedBMW = bmwCar.getTopSpeed();
-        System.out.println("Top speed is: " + topSpeedBMW);
-        bmwCar.run();
-
-        System.out.println("--------------------------------------");
-
-        Bicycle bicycle = new Bicycle();
-        bicycle.model="RowerDwukołowy";
-        bicycle.colour="black";
-        bicycle.price= 1000.00;
-        bicycle.getVehicleInfo();
-        bicycle.ringBell();
-        bicycle.isItVehicle();
-        bicycle.run();
+        System.out.println("Cat");
+        cat.talk();
+        System.out.println(cat.getNumberOfLegs());
+        cat.sleep();
+        cat.wakeUp();
+        System.out.println("-------------------------");
 
 
+//        System.out.println("CatMammal");
+//        // catMammal.talk(); - not able to use this method - not implemeted in mammal
+//        catMammal.sleep();
+//        catMammal.wakeUp();
+//        System.out.println("-------------------------");
 
 
+        System.out.println("Bird");
+        bird.talk();
+        System.out.println(bird.getNumberOfLegs());
+        bird.sleep();
+        bird.wakeUp();
+        System.out.println("-------------------------");
 
+//        System.out.println("BirdAnimal");
+//        birdAnimal.talk();
+//        System.out.println(birdAnimal.getNumberOfLegs());
+//        birdAnimal.sleep();
+//        birdAnimal.wakeUp();
+//        System.out.println("-------------------------");
 
+        showAnimalInfo(cat);
+        showAnimalInfo(bird);
+        showAnimalInfo(dog);
 
+        Animal[] animals = {cat, dog, bird};
+
+        for (Animal animal : animals){
+            showAnimalInfo(animal);
+        }
+    }
+
+    private static void showAnimalInfo( Animal animal) {
+        System.out.println(animal.getType());
+        animal.talk();
+        System.out.println(animal.getNumberOfLegs());
+        animal.sleep();
+        animal.wakeUp();
+        System.out.println(animal.getSize().getTranslation());
+        System.out.println(animal.getSize().getTestValue());
+        // System.out.println(animal.getSize().equals(SizeType.BIG)); - possible nullpointer need to compare 100% existing value to possible size
+        System.out.println(SizeType.BIG.equals(animal.getSize())); // Correct assertion
+        System.out.println("-------------------------");
     }
 
 }
